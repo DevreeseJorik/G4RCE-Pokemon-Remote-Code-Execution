@@ -1,3 +1,5 @@
-__pycache__
-.vs
+**/__pycache__
 *.log
+
+.vs
+.vscode/

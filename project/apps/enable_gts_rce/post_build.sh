@@ -1,1 +1,0 @@
-python3 ./generate_script.py
