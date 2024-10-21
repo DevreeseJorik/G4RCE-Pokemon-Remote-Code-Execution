@@ -1,0 +1,7 @@
+out_of_packets_timeout: 5
+packets:
+  - packet_type: none
+    filepath: "/home/project/out/diamond_pearl/communication/bin/communication.bin"
+
+  - packet_type: code
+    filepath: "/home/project/out/diamond_pearl/assembly_projects/bin/give_all_items.bin"
