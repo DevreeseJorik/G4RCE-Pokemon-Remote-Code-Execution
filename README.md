@@ -1,12 +1,12 @@
 # DP_Remote
-This repository has the goal of allowing code to be sent remotely to all Generation 4 Pokémon games (Pokémon Diamond, Pearl, Platinum, HGSS). Currently supports Diamond and Pearl. In order to interpret the data sent from the server as code, an ACE code has to be executed on the target game.
+This repository has the goal of allowing code to be sent remotely to all Generation 4 Pokémon games (Pokémon Diamond, Pearl, Platinum, HGSS). Currently supports Diamond, Pearl and Platinum. In order to interpret the data sent from the server as code, an ACE code has to be executed on the target game.
 
 The repository is still work in progress, consider everything experimental and heavily subject to future changes.
 
 # Requirements
 - docker
 - docker-compose
-- Generation 4 Pokemon game (`Diamond/Pearl`!)
+- Generation 4 Pokemon game (`Diamond/Pearl/Platinum`!)
 - A supported device to run the game on
    - DS Family (DS, DSi, 3DS)
    - melonDS (not Bizhawk)
@@ -18,8 +18,16 @@ This only applies when using DS Family devices, not necessary when using an emul
 # Setting up the Game
 ## Diamond & Pearl
 
-In order to make use of this repository, 
-refer to the [ASE/ACE Setup](https://www.craft.me/s/HTe6sst8Gf36r2). After setting this up, execute the [Remote Payload Injection](https://app.jorikdevreese.com/script_conversion/main.html?script=remote%20payload%20injection) code. 
+In order to make use of this repository,
+refer to the [ASE/ACE Setup](https://www.craft.me/s/HTe6sst8Gf36r2). After setting this up, execute the [Remote Payload Injection (diamond_pearl)](https://app.jorikdevreese.com/script_conversion/main.html?script=remote%20payload%20injection%20(diamond%20pearl)) code.
+
+## Platinum
+
+Platinum requires first setting up ACE in Diamond and Pearl, and then transferring ACE using wonder cards.a payload is available for this: [Wonder Card ACE](https://app.jorikdevreese.com/script_conversion/main.html?script=wonder%20card%20ace).
+
+Once ACE is set up, you can execute the [Remote Payload Injection (platinum)](https://app.jorikdevreese.com/script_conversion/main.html?script=remote%20payload%20injection%20(platinum)) code.
+
+Currently no sample codes are provided for Platinum.
 
 # Setting up the repository
 All code is conveniently packaged into a Docker container. There are two major components:
@@ -46,7 +54,7 @@ Alternatively, you may enter the docker using `Dev Containers` after building.
 If the host machine's IP address is not static, run `run_docker{.sh, .bat} -b` to update the `HOST_IP_ADDRESS` environment variable for the container before entering.
 
 # Connecting to the server
-You are now ready to run the DNS and HTTP server to which retail Nintendo DS cartridges can connect. It makes use of the PokemonClassic network to get the required certificates. This enables it to transfer data to and from retail Nintendo DS cartridges. It is compatible with all Generation-IV Pokémon games (Diamond, Pearl, Platinum, HeartGold, SoulSilver). However, code compatibility is limited to Diamond and Pearl at this moment.
+You are now ready to run the DNS and HTTP server to which retail Nintendo DS cartridges can connect. It makes use of the PokemonClassic network to get the required certificates. This enables it to transfer data to and from retail Nintendo DS cartridges. It is compatible with all Generation-IV Pokémon games (Diamond, Pearl, Platinum, HeartGold, SoulSilver). Note that Heartgold and Soulsilver are not currently supported.
 
 ## Starting the server
 If you started the container in Production mode, the server will already have started.
