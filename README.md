@@ -23,7 +23,7 @@ refer to the [ASE/ACE Setup](https://www.craft.me/s/HTe6sst8Gf36r2). After setti
 
 ## Platinum
 
-Platinum requires first setting up ACE in Diamond and Pearl, and then transferring ACE using wonder cards.a payload is available for this: [Wonder Card ACE](https://app.jorikdevreese.com/script_conversion/main.html?script=wonder%20card%20ace).
+Platinum requires first setting up ACE in Diamond and Pearl, and then transferring ACE using wonder cards.a payload is available for this: [Wonder Card ACE](https://app.jorikdevreese.com/script_conversion/main.html?script=wondercard%20ace).
 
 Once ACE is set up, you can execute the [Remote Payload Injection (platinum)](https://app.jorikdevreese.com/script_conversion/main.html?script=remote%20payload%20injection%20(platinum)) code.
 
