@@ -1,12 +1,13 @@
-FROM stronglytyped/arm-none-eabi-gcc:latest
+FROM ubuntu:22.04 AS build
 
-RUN apt-get update -y &&  \
-    apt-get install -y python3.8 python3.8-distutils wget && \
-    wget https://bootstrap.pypa.io/get-pip.py && \
-    python3.8 get-pip.py && \
-    rm get-pip.py
+LABEL maintainer="Jorik Devreese"
+LABEL version="0.1"
+LABEL description="docker image for hosting a GTS server injecting remote code into gen 4 Pokémon games."
 
-RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1 && alias python=python3
+RUN DEBIAN_FRONTEND=noninteractive apt-get update -y &&  \
+    DEBIAN_FRONTEND=noninteractive apt-get upgrade -y &&  \
+    DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y build-essential git libpng-dev gdebi-core python3 python3-pip cmake automake libnewlib-arm-none-eabi libnewlib-dev libstdc++-arm-none-eabi-dev libstdc++-arm-none-eabi-newlib gcc-arm-none-eabi mono-devel && \
+    DEBIAN_FRONTEND=noninteractive apt-get update -y
 
 ADD build /tmp
 RUN pip install -r /tmp/requirements.txt && rm /tmp/requirements.txt
