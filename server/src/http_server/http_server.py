@@ -42,44 +42,48 @@ packet_handler = PacketHandler(config_path="/home/server/config.yaml")
 def handle_request():
     if request.url_rule is None:
         http_logging.warning(f"No route found for {request.url}")
-        return None
+        return GTSResponse(b'\x01\x00')
     gts_logging.info(f"Incoming Request: {request.url} {request.args.to_dict()}")
     if len(request.args.to_dict()) == 1:
         return GTSResponse(AUTH_TOKEN)
 
 class GTSServer(FlaskView):
-    route_base = '/pokemondpds/worldexchange'
+    route_base = '/pokemondpds'
 
     def __init__(self):
         self.b64sc = B64SCCrypto()
 
-    @route('/info.asp', methods=['GET'])
+    @route('/worldexchange/info.asp', methods=['GET'])
     def info(self):
         gts_logging.info('Connection Established.')
         packet_handler.reset()
         return GTSResponse(b'\x01\x00')
 
-    @route('/common/setProfile.asp', methods=['GET'])
+    @route('/worldexchange/common/setProfile.asp', methods=['GET'])
     def set_profile(self):
         return GTSResponse(b'\x00' * 8)
 
-    @route('/post.asp', methods=['GET'])
+    @route('/common/setProfile.asp', methods=['GET'])
+    def set_profile_plat(self):
+        return GTSResponse(b'\x00' * 8)
+
+    @route('/worldexchange/post.asp', methods=['GET'])
     def post(self):
         data = self.b64sc.decrypt(request.args.get('data'))
         gts_logging.info(f"POST data: {data.hex()}")
         packet_handler.handle_post(data)
         return GTSResponse(b'\x0c\x00')
 
-    @route('/search.asp', methods=['GET'])
+    @route('/worldexchange/search.asp', methods=['GET'])
     def search(self):
         return GTSResponse(b'')
 
-    @route('/result.asp', methods=['GET'])
+    @route('/worldexchange/result.asp', methods=['GET'])
     def result(self):
         payload = packet_handler.get_payload()
         return GTSResponse(payload)
 
-    @route('/delete.asp', methods=['GET'])
+    @route('/worldexchange/delete.asp', methods=['GET'])
     def delete(self):
         return GTSResponse(b'\x01\x00')
 
