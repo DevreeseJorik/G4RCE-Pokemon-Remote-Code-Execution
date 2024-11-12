@@ -10,6 +10,7 @@ set(SUB_PROJECTS
     dot_artist_editor
     assembly_projects
     generate_ase_script
+    enable_cloning
 )
 
 foreach(SUB_PROJECT IN LISTS SUB_PROJECTS)
