@@ -6,7 +6,6 @@ file(GLOB COMMON_LIB_SRC_FILES ${COMMON_LIB_DIR}/*/*.c)
 
 set(SUB_PROJECTS
     communication
-    increase_packetsize
     dot_artist_editor
     assembly_projects
     generate_ase_script
