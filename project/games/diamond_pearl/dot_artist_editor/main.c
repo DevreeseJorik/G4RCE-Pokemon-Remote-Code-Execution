@@ -5,7 +5,7 @@ __attribute__((section(".text.main")))
 __attribute__((target("thumb")))
 void main(void) {
     __asm__ volatile (
-        "push {r1-r7}\n"
+        "push {r1-r7, lr}\n"
     );
     setDotArtistToGTSProc();
     __asm__ volatile (
