@@ -151,21 +151,23 @@ class PacketHandler:
 
         self.payload_length = data.get("payload_length", self.payload_length)
 
-    def get_payload(self):
+    def get_payload(self, count=1):
+        payload_length = self.payload_length * count
+
         sleep(2)
         packet_config =  self.config.get("packets", [])
         if self.payload_id >= len(packet_config):
             timeout = self.config.get("out_of_packets_timeout", 10)
             packet_logging.info(f"Got request but all payloads have been sent. Timeout: {timeout}s.")
             sleep(timeout)
-            return b'\x00' * self.payload_length
+            return b'\x00' * payload_length
 
         packet_info = packet_config[self.payload_id]
 
         packet_type = packet_info.get("packet_type")
         generator_info =  self.generators.get(packet_type, self.generators.get("default"))
         packet_info["id"] = generator_info.get("id")
-        generator = generator_info.get("class")(packet_info, self.payload_length)
+        generator = generator_info.get("class")(packet_info, payload_length)
 
         self._update(packet_info.get("pre_update"))
         request_next = int(self.payload_id != (len(packet_config) -1))

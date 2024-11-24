@@ -76,11 +76,17 @@ class GTSServer(FlaskView):
 
     @route('/worldexchange/search.asp', methods=['GET'])
     def search(self):
-        return GTSResponse(b'')
+        data = self.b64sc.decrypt(request.args.get('data'))
+        gts_logging.info(f"POST data: {data.hex()}")
+        count = int(data.hex()[-2:], 16)
+        payload = packet_handler.get_payload(count=count)
+        return GTSResponse(payload)
 
     @route('/worldexchange/result.asp', methods=['GET'])
     def result(self):
-        payload = packet_handler.get_payload()
+        data = self.b64sc.decrypt(request.args.get('data'))
+        gts_logging.info(f"POST data: {data.hex()}")
+        payload = packet_handler.get_payload(count=1)
         return GTSResponse(payload)
 
     @route('/worldexchange/delete.asp', methods=['GET'])
