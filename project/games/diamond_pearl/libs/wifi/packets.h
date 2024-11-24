@@ -4,7 +4,6 @@
 #include "util/types.h"
 
 #define PACKET_SIZE 292
-#define CUSTOM_PACKET_SIZE 3000
 
 enum {
     TYPE_NONE,
@@ -24,11 +23,6 @@ typedef struct {
     PACKET_HEADER header;
     u8 data[ PACKET_SIZE - sizeof(PACKET_HEADER)];
 } PACKET;
-
-typedef struct {
-	u8 http_header[0xD4];
-	PACKET packet;
-} HTTP_PACKET;
 
 typedef struct {
     PACKET_HEADER header;
