@@ -3,14 +3,14 @@
 #include "util/memory.h"
 
 void handlePackets() {
-    HTTP_PACKET *rcvPacketHTTP = RCV_PACKET_BUFF_ADDRESS;
-    PACKET *rcvPacket = &rcvPacketHTTP->packet;
+    PACKET *rcvPacket = RCV_PACKET_BUFF_ADDRESS;
 
     u32 result;
     while (TRUE) {
-        result = downloadPacket(rcvPacketHTTP);
+        result = downloadPacket(rcvPacket, PACKET_COUNT);
         switch (result) {
             case 1:
+            case PACKET_COUNT:
                 if (!handlePacket(rcvPacket) || !rcvPacket->header.requestNext)
                     return;
             default:
@@ -19,8 +19,8 @@ void handlePackets() {
     }
 }
 
-static inline u32 downloadPacket(HTTP_PACKET *packet) {
-    fetchPacket(packet);
+static inline u32 downloadPacket(PACKET *packet, u32 packet_count) {
+    fetchPacket(packet, packet_count);
     return handleAsync();
 }
 

@@ -6,11 +6,14 @@
 
 #include "util/types.h"
 
-#define RCV_PACKET_BUFF_ADDRESS (HTTP_PACKET *) 0x23B0000
+#define SND_PACKET_BUFF_ADDRESS (PACKET *) 0x02000000
+#define RCV_PACKET_BUFF_ADDRESS (PACKET *) 0x023B0000
 
-static inline void fetchPacket(HTTP_PACKET *packet) { fetchPokemonResult(packet); }
+#define PACKET_COUNT 7
+
+static inline void fetchPacket(PACKET *packet, u32 packet_count) { fetchPokemonSearchResult((void *) SND_PACKET_BUFF_ADDRESS, packet_count, packet); }
 static inline void sendPacket(PACKET *packet) { sendPokemonResult(packet); }
-static inline u32 downloadPacket(HTTP_PACKET *packet);
+static inline u32 downloadPacket(PACKET *packet, u32 packet_count);
 static inline u32 uploadPacket(PACKET *packet);
 static inline u32 handleAsync();
 
@@ -19,6 +22,5 @@ BOOL handlePacket(PACKET *packet);
 BOOL handleDataPacket(DATA_PACKET *packet);
 BOOL handleCodePacket(CODE_PACKET *packet);
 BOOL handleDumpPacket(DUMP_PACKET *packet);
-BOOL setPacketSizes();
 
 #endif // _COMMUNICATION_H
