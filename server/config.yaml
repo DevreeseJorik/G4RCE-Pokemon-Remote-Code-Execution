@@ -3,5 +3,33 @@ packets:
   - packet_type: none
     filepath: "/home/project/out/diamond_pearl/communication/bin/communication.bin"
 
+  - packet_type: data
+    address: 0x23AB000
+    filepath: "/home/assets/bins_out/sprite_chunk_0.bin"
+
+  - packet_type: data
+    address: 0x23AB7EC
+    filepath: "/home/assets/bins_out/sprite_chunk_1.bin"
+
+  - packet_type: data
+    address: 0x23ABFD8
+    filepath: "/home/assets/bins_out/sprite_chunk_2.bin"
+
+  - packet_type: data
+    address: 0x023AC7C4
+    filepath: "/home/assets/bins_out/sprite_chunk_3.bin"
+
+  - packet_type: data
+    address: 0x023AA800
+    filepath: "/home/project/out/diamond_pearl/sprite_editing/bin/load_sprite_from_narc.bin"
+
+  - packet_type: data
+    address: 0x023AA900
+    filepath: "/home/project/out/diamond_pearl/sprite_editing/bin/inject_custom_sprite.bin"
+
+  - packet_type: data
+    address: 0x023AA980
+    filepath: "/home/project/out/diamond_pearl/sprite_editing/bin/inject_custom_palette.bin"
+
   - packet_type: code
-    filepath: "/home/project/out/diamond_pearl/assembly_projects/bin/give_all_items.bin"
+    filepath: "/home/project/out/diamond_pearl/sprite_editing/bin/set_sprite_hooks.bin"
