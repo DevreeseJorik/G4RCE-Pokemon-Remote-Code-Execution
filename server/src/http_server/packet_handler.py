@@ -167,6 +167,7 @@ class PacketHandler:
         packet_type = packet_info.get("packet_type")
         generator_info =  self.generators.get(packet_type, self.generators.get("default"))
         packet_info["id"] = generator_info.get("id")
+        packet_logging.debug(f"returning data for filepath: {packet_info.get('filepath')}")
         generator = generator_info.get("class")(packet_info, payload_length)
 
         self._update(packet_info.get("pre_update"))
