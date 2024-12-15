@@ -57,7 +57,7 @@ BOOL handleDataPacket(DATA_PACKET *packet) {
     if (packet->header.destinationAddress == NULL)
         return FALSE;
 
-    memcp(packet->header.destinationAddress, packet->data, packet->header.size);
+    memcp(packet->header.destinationAddress, &packet->data, packet->header.size);
     return TRUE;
 }
 
