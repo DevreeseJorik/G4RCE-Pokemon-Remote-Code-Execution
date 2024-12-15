@@ -11,6 +11,7 @@ services:
     volumes:
       - ./server:/home/server
       - ./project:/home/project
+      - ./assets:/home/assets
     environment:
       HOST_IP_ADDRESS: ${HOST_IP_ADDRESS}
     tty: true

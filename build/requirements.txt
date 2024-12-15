@@ -3,3 +3,4 @@ Flask==3.0.2
 Flask-Classful==0.16.0
 colorlog==6.8.2
 PyYAML==6.0.2
+PILLOW==11.0.0
