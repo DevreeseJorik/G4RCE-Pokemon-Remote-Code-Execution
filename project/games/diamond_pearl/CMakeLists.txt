@@ -10,6 +10,7 @@ set(SUB_PROJECTS
     assembly_projects
     generate_ase_script
     enable_cloning
+    sprite_editing
 )
 
 foreach(SUB_PROJECT IN LISTS SUB_PROJECTS)
