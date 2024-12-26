@@ -6,11 +6,6 @@
     "input_fields": [
       {
         "type": "command",
-        "name": "Nop",
-        "parameters": []
-      },
-      {
-        "type": "command",
         "name": "LoadAdrsValue",
         "parameters": [
           {
