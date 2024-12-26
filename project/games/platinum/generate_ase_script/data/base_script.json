@@ -53,37 +53,37 @@
       {
         "language": "English",
         "name": "FUN_EvCmdNameInStone",
-        "value": "0x0203c58c"
+        "value": "0x02042785"
       },
       {
         "language": "French",
         "name": "FUN_EvCmdNameInStone",
-        "value": "0x203C5D4"
+        "value": "0x?"
       },
       {
         "language": "German",
         "name": "FUN_EvCmdNameInStone",
-        "value": "0x203C5D4"
+        "value": "0x?"
       },
       {
         "language": "Italian",
         "name": "FUN_EvCmdNameInStone",
-        "value": "0x203C5D4"
+        "value": "0x?"
       },
       {
         "language": "Spanish",
         "name": "FUN_EvCmdNameInStone",
-        "value": "0x203C5D4"
+        "value": "0x?"
       },
       {
         "language": "Japanese Rev5",
         "name": "FUN_EvCmdNameInStone",
-        "value": "0x203F75C"
+        "value": "0x?"
       },
       {
         "language": "Japanese Rev6",
         "name": "FUN_EvCmdNameInStone",
-        "value": "0x203F800"
+        "value": "0x?"
       }
     ],
     "documentation": ""
