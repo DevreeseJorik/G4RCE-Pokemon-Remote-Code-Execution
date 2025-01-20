@@ -6,6 +6,11 @@
     "input_fields": [
       {
         "type": "command",
+        "name": "Nop",
+        "parameters": []
+      },
+      {
+        "type": "command",
         "name": "LoadAdrsValue",
         "parameters": [
           {
@@ -21,6 +26,17 @@
         ]
       },
       {
+        "type": "command",
+        "name": "BicycleReq",
+        "parameters": [
+          {
+            "name": "flag",
+            "type": "text",
+            "value": "0x1"
+          }
+        ]
+      },
+      {
         "type": "memory_editor",
         "memory": [
           "0x71",
@@ -29,6 +45,11 @@
       }
     ],
     "variables": [
+      {
+        "language": "All",
+        "name": "byte_code_offset",
+        "value": "0x0"
+      },
       {
         "language": "English",
         "name": "FUN_EvCmdNameInStone",
