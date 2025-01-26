@@ -11,12 +11,12 @@ push {r0-r7, lr}
 add r3,#0x14
 ldrh r0,[r3]            @ redistribution offset
 ldrh r1,[r3,#0x2]       @ load redistribution flags
+add r3,r0
 
 @ load flags
-str r1,[r3,r0]
-add r0,#0x2
+strh r1,[r0]
 mov r4,#0xEE
-str r4,[r3,r2]
+strb r4,[r0,#0x1]
 
 pop {r0-r7, pc}
 
