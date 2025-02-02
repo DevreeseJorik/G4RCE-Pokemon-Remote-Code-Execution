@@ -5,19 +5,19 @@
 .global start
 
 _start:
-push {r0-r7, lr}
+add r3, #0x17
+mov r0, r3
 
-add r3,#0x19
-ldmia r3,{r4,r5}
-mov r0,r3
-add r1,r3,r5
+_loop:
+ldrh r1, [r0]
+cmp  r1, #0
+beq  _end
 
-@ Copy payload
-mov r2,#0x4C
-blx r4
+ldrh r2, [r0, #2] @ in bytes
+add r1, r0, r1
+add r0, r0, #4
+swi 0xB
+b _loop
 
-pop {r0-r7, pc}
-
-_data:
-.word  0x20CE3E0            @ Copy function DP: call to 0x20CE3E0, r0 = dest, r1=src, r2=size, size is 4C
-.word  0x9E7E               @ dots -> gift offset
+_end:
+pop  {r4, pc}
